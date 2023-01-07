@@ -1,0 +1,35 @@
+
+<h2 class="display-2 text-center" >VALIDACIONES</h2>
+<form [formGroup]="formLogin" class="font-monospace" >
+  <div class="form-group">
+    <div class="row">
+      <div class="col py-3 px-5">
+        <input type="text" class="form-control" formControlName="name" placeholder="Name" [(ngModel)]="name" (ngModelChange)="mostrarerror()" />
+      </div>
+      <div class="col py-4">
+        <div class="error" *ngIf="show">
+          <span>Ingrese un minimo de 10 caracteres</span>
+        </div>    
+      </div>
+    </div>
+    <div class="row">
+      <div class="col py-3 px-5">
+        <input type="email" class="form-control" formControlName="email" placeholder="Email" [(ngModel)]="Email" (ngModelChange)="mostrarerror()"/>
+      </div>
+      <div class="col py-4">
+        <div class="error" *ngIf="show">
+          <span>El email no es valido</span>
+        </div>   
+      </div>
+    </div>
+    <div class="row">
+      <div class="col py-3 px-5">
+        <textarea name="" id="" cols="30" rows="10" class="form-control" formControlName="textarea" placeholder="Country" [(ngModel)]="textArea" (ngModelChange)="mostrarerror()"></textarea>
+      </div>
+    </div>
+    <div class="error py-1 px-5" *ngIf="show">
+      <span>El mensaje no puede quedar vacio</span>
+    </div>
+  </div>
+  <button type="button" (click)="enviar()" class="btn btn-success" [disabled]="formLogin.invalid" >Submit</button>
+</form>
